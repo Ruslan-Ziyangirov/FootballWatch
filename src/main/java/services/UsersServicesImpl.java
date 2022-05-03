@@ -5,23 +5,16 @@ import form.UserForm;
 import models.Authorization;
 import models.User;
 import org.mindrot.jbcrypt.BCrypt;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositories.UserRepository;
-import repositories.old.AuthRepository;
-
 import javax.servlet.http.Cookie;
-import java.sql.Connection;
-import java.util.UUID;
 
 @Service("userService")
 public class UsersServicesImpl implements UsersService {
 
     @Autowired
     private UserRepository userRepository;
-
-    private AuthRepository authRepository;
 
     public UsersServicesImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -37,51 +30,51 @@ public class UsersServicesImpl implements UsersService {
     @Override
     public User register(UserForm userForm) {
 //        usersRepository.save()
-        System.out.println(userForm);
-        User user = new User();
-        user.setFirst_name(userForm.getFirst_name());
-        user.setSecond_name(userForm.getSecond_name());
-        user.setEmail(userForm.getEmail());
-        user.setLogin(userForm.getLogin());
+//        System.out.println(userForm);
+//        User user = new User();
+//        user.setFirst_name(userForm.getFirst_name());
+//        user.setSecond_name(userForm.getSecond_name());
+//        user.setEmail(userForm.getEmail());
+//        user.setLogin(userForm.getLogin());
+//
+//        String passwordHash = new BCrypt().hashpw(userForm.getPassword(),BCrypt.gensalt(4));
+//
+//        user.setPasswordHash(passwordHash);
+//
+//        System.out.println("Помогите, пожалуйста");
 
-        String passwordHash = new BCrypt().hashpw(userForm.getPassword(),BCrypt.gensalt(4));
-
-        user.setPasswordHash(passwordHash);
-
-        System.out.println("Помогите, пожалуйста");
-
-        return userRepository.save(user);
+        return null;
 
     }
 
     @Override
     public Cookie signIn(LoginForm loginForm) {
-
-        User user = userRepository.findByLogin(loginForm.getLogin());
-        System.out.println("Я в UsersServicesImpl в методе sign in");
-        System.out.println(user);
-        if(user != null){
-
-            if(BCrypt.checkpw(loginForm.getPassword(),user.getPasswordHash())){
-                System.out.println("Вход выполнен");
-
-                String cookieValue = UUID.randomUUID().toString();
-                System.out.println(cookieValue);
-
-                Authorization authorization = new Authorization();
-                authorization.setUser(user);
-                authorization.setCookieValue(cookieValue);
-                System.out.println(authorization);
-                authRepository.save(authorization);
-
-                Cookie cookie = new Cookie("Authorization",cookieValue);
-                cookie.setMaxAge(10*60*60);
-
-                return cookie;
-            }else{
-                System.out.println("Вход не выполнен");
-            }
-        }
+//
+//        User user = userRepository.findByLogin(loginForm.getLogin());
+//        System.out.println("Я в UsersServicesImpl в методе sign in");
+//        System.out.println(user);
+//        if(user != null){
+//
+//            if(BCrypt.checkpw(loginForm.getPassword(),user.getPasswordHash())){
+//                System.out.println("Вход выполнен");
+//
+//                String cookieValue = UUID.randomUUID().toString();
+//                System.out.println(cookieValue);
+//
+//                Authorization authorization = new Authorization();
+//                authorization.setUser(user);
+//                authorization.setCookieValue(cookieValue);
+//                System.out.println(authorization);
+//                authRepository.save(authorization);
+//
+//                Cookie cookie = new Cookie("Authorization",cookieValue);
+//                cookie.setMaxAge(10*60*60);
+//
+//                return cookie;
+//            }else{
+//                System.out.println("Вход не выполнен");
+//            }
+//        }
         return null;
     }
 

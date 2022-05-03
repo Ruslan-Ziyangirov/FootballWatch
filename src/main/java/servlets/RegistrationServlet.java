@@ -1,6 +1,8 @@
 package servlets;
 
 import form.UserForm;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import repositories.UserRepository;
@@ -23,23 +25,9 @@ public class RegistrationServlet extends HttpServlet {
     private UsersServicesImpl usersService;
 
 
-//    @Override
-//    public void init(ServletConfig config) throws ServletException {
-//        ServletContext servletContext = config.getServletContext();
-//        usersService = (UsersService) servletContext.getAttribute("usersService");
-//    }
-
     @Override
-    public void init() throws ServletException {
-
-        String url="jdbc:postgresql://localhost:5432/postgres";
-        String username = "postgres";
-        String password = "postgres";
-        DataSource dataSource = new DriverManagerDataSource(url, username, password);
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-        UserRepository userRepository = new UserRepositoryJdbcTemplateImpl(jdbcTemplate);
-
-        usersService = new UsersServicesImpl(userRepository);
+    public void init(ServletConfig config) throws ServletException {
+        ApplicationContext context = (ApplicationContext) config.getServletContext().getContext("applicationContext");
     }
 
 
@@ -51,7 +39,7 @@ public class RegistrationServlet extends HttpServlet {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
         System.out.println("ЖИВИ!");
-        request.getRequestDispatcher("jsp/registr.jsp").forward(request, response);
+        request.getRequestDispatcher("jsp/registr.ftl").forward(request, response);
 
 
     }
@@ -74,6 +62,6 @@ public class RegistrationServlet extends HttpServlet {
 
         usersService.register(userForm);
 
-        request.getRequestDispatcher("jsp/index.jsp").forward(request, response);
+        request.getRequestDispatcher("jsp/index.ftl").forward(request, response);
     }
 }
