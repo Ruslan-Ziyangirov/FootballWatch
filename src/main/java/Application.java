@@ -1,14 +1,8 @@
-import models.Authorization;
-import models.User;
+import ru.kpfu.itis.models.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import repositories.AuthRepository;
-import repositories.UserRepository;
-import repositories.UserRepositoryJdbcTemplateImpl;
+import ru.kpfu.itis.repositories.UserRepository;
 
-import javax.sql.DataSource;
 import java.util.List;
 
 public class Application {
