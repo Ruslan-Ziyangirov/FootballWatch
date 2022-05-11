@@ -8,13 +8,15 @@ function sendRequest() {
         email: emailRequest
     }
 
+    console.log(request)
+
     $.ajax({
-        url: '/e',
-        method: 'post',
-        dataType: 'json',
-        data: {request: JSON.stringify(request)},
+        url: '/request',
+        method: 'POST',
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(request),
         success: function (data) {
-            alert(data);
+            alert("Сообщение отправлено!")
         }
     })
 }

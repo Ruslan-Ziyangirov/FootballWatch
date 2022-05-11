@@ -23,7 +23,7 @@
                 <a href="#about-project" class="btn-about-project">О проекте</a>
                 <a href="#timetable" class="btn-timetable">Расписание матчей</a>
                 <a href="#send" class="btn-request" >Заявка</a>
-                <a href="/chat" class="chat"  >Чат</a>
+                <a href="/chatP" class="chat"  >Чат</a>
             </div>
 
             <div class="additional-menu">
@@ -143,7 +143,7 @@
 <img src="/resources/image/barc.png" class="barc">
 <img src="/resources/image/holland.png" class="holland">
 
-<form method="post" action="/s" id="myModal">
+<form method="post" action="/main" id="myModal">
     <p class="avtorisation">Авторизация</p>
     <div class="wrapper-input">
         <input type="text" placeholder="Логин" name="login" required>
@@ -151,23 +151,6 @@
         <button type="submit" class="btn-send-auth">
             Войти
         </button>
-        <h4 style="
-        color: #0a54ea;
-        font-size: 15px;
-        margin: 0 auto;
-        width: 250px;
-        ">
-
-        </h4>
-        <h4 style="
-        color: #0a54ea;
-        font-size: 15px;
-        margin: 0 auto;
-        width: 250px;
-        ">
-
-        </h4>
-
         <span id="myModal__close" class="close">ₓ</span>
     </div>
 </form>

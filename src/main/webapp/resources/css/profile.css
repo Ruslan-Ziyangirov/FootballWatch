@@ -1,0 +1,79 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    margin: 0px ;
+    padding: 0px;
+    background: #272E3C;
+    color: #FFFFFF;
+}
+
+.header-wrapper{
+    width: 1170px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px auto ;
+    padding-top: 24px;
+}
+
+.header-wrapper a{
+    color: rgba(255, 255, 255, 0.7);
+    margin-right: 32px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.header-wrapper a:hover{
+    border-bottom: 1px solid rgba(255, 255, 255);
+    color: #FFFFFF;
+}
+
+.header-wrapper a:last-child{
+    margin-right: 0px;
+}
+
+.additional-menu{
+    display: flex;
+    align-items: center;
+}
+
+.additional-menu .sign-in{
+    margin-right: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.additional-menu .sign-in p{
+    margin: 0px 0px 0px 16px;
+
+}
+
+.additional-menu a{
+    text-decoration: none;
+    font-size: 16px;
+}
+
+
+.profile_page_wrapper{
+    width: 1200px;
+    margin: 64px auto 0;
+
+}
+
+.profile_information_wrapper{
+    width: 300px;
+}
+
+.image-profile{
+    width: 40%;
+    margin-bottom: 24px;
+}
+
+.information_row{
+    display: flex;
+    align-items: center;
+}
+
+.information_row h3{
+    margin-right: 16px;
+}

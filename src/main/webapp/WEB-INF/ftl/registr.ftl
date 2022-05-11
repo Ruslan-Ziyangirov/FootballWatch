@@ -40,14 +40,15 @@
         <h1>
             Регистрация
         </h1>
-        <form action="/registration" method="post" class="form" >
-            <input type="text" placeholder="Имя" name="first_name" min="3" max="10" maxlength="30" minlength="3" required>
-            <input type="text" placeholder="Фамилия" name="second_name" min="3" max="30" maxlength="30" minlength="3" required>
-            <input type="text" placeholder="Логин" name="login" min="3" max="30" maxlength="30" minlength="3" required>
-            <input type="password" placeholder="Пароль" name="password" min="3" max="30" maxlength="30" minlength="3" required>
-            <input type="email" placeholder="E-mail" name="email" min="3" max="30" maxlength="30" minlength="3" required>
-            <button type="submit" class="btn-registrate">Зарегистрироваться</button>
-        </form>
+            <form action="/registration" method="post" class="form" >
+                <input type="text" placeholder="Имя" name="first_name" min="3" max="10" maxlength="30" minlength="3" required>
+                <input type="text" placeholder="Фамилия" name="second_name" min="3" max="30" maxlength="30" minlength="3" required>
+                <input type="text" placeholder="Логин" name="login" min="3" max="30" maxlength="30" minlength="3" required>
+                <input type="password" placeholder="Пароль" name="password" min="3" max="30" maxlength="30" minlength="3" required>
+                <input type="password" placeholder="Повторите пароль" name="repassword" min="3" max="30" maxlength="30" minlength="3" required>
+                <input type="email" placeholder="E-mail" name="email" min="3" max="30" maxlength="30" minlength="3" required>
+                <button type="submit" class="btn-registrate">Зарегистрироваться</button>
+            </form>
     </div>
 </header>
 <script  src="/resources/js/jquery-3.6.0.min.js"></script>

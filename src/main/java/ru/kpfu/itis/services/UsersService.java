@@ -1,13 +1,19 @@
 package ru.kpfu.itis.services;
 
+import ru.kpfu.itis.dto.LoginDto;
 import ru.kpfu.itis.dto.UserDto;
 import ru.kpfu.itis.form.LoginForm;
+import ru.kpfu.itis.models.Match;
+import ru.kpfu.itis.models.User;
 
 import javax.servlet.http.Cookie;
+import java.util.List;
 
 
 public interface UsersService {
-    void addUser(UserDto userDto);
-    Cookie signIn(LoginForm loginForm);
+    User addUser(UserDto userDto);
+    Cookie signIn(LoginDto loginDto);
+    List<Match> getAllMatches();
+
 //    void requestMessage(RequestForm requestForm);
 }

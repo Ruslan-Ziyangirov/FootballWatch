@@ -1,11 +1,14 @@
 package ru.kpfu.itis.repositories;
 
-import ru.kpfu.itis.models.User;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+import ru.kpfu.itis.models.User;
 
-@Repository
-public interface UserRepository extends CrudRepository<User,Long>{
+import java.util.Optional;
 
-    User findByLogin(String login);
+@Repository @Transactional
+public interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findUserByEmail(String email);
+    Optional<User> findByLogin(String login);
 }

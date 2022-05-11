@@ -10,9 +10,10 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDto {
-    private String firstName;
-    private String secondName;
+    private String first_name;
+    private String second_name;
     private String login;
     private String password;
+    private String repassword;
     private String email;
 }

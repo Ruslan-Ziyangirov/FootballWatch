@@ -428,7 +428,7 @@ input:valid {
 
 
 #myModal {
-    width: 298px; height: 350px;
+    width: 343px; height: 300px;
     padding: 18px 9px;
     border-radius: 4px;
     background: #fafafa;
@@ -450,15 +450,15 @@ input:valid {
 }
 
 #myModal input{
-    margin-top: 5px;
-    border: 1px solid rgba(39, 52, 86, 0.26);
+    margin-top: 8px;
+    border: 1px solid rgba(11, 65, 194, 0.26);
     box-sizing: border-box;
-    border-radius: 5px;
-    font-size: 12px;
+    border-radius: 10px;
+    font-size: 14px;
     font-family: 'Montserrat', sans-serif;
     display: block;
     width: 100%;
-    padding: 15px 20px;
+    padding: 30px 30px;
 
 }
 
@@ -535,3 +535,4 @@ input:valid {
 .no-scroll {
     overflow-y: hidden;
 }
+
