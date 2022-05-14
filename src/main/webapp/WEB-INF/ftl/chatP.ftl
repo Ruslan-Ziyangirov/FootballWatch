@@ -18,22 +18,28 @@
 
             <nav class="menu">
                 <a href="/main">Главная</a>
-                <a>Расписание</a>
-                <a>Заявка</a>
-                <a>О проекте</a>
-                <a>Чат</a>
+                <a href="/main">Расписание</a>
+                <a href="/main">Заявка</a>
+                <a href="/main">О проекте</a>
+                <a href="/chatP">Чат</a>
             </nav>
 
-            <div class="additional-menu">
-                <a class="sign-in">
-                    <img src="/resources/image/user.svg">
-                    <p>Войти</p>
+            <#if user??>
+                <a href="/profile">
+                    <img src="/resources/image/user.svg">${(user.first_name)!}
                 </a>
+            <#else>
+                <div class="additional-menu">
+                    <div class="sign-in">
+                        <a href="#" class="voity">Войти</a>
+                    </div>
 
-                <div class="log-in">
-                    <a href="/r" class="registr">Зарегистрироваться</a>
+                    <div class="log-in">
+                        <a href="/registration" class="registr">Зарегистрироваться</a>
+                    </div>
                 </div>
-            </div>
+
+            </#if>
         </div>
 
         <div class="chat_page_wrapper">
@@ -65,47 +71,29 @@
                 </div>
 
                 <div class="table_matches">
-                    <hr></hr>
-                    <div class="row_matches">
-                        <div class="mini_information">
-                            <h3>
-                                Нижний Новгород
-                            </h3>
-                            <p>
-                                14:00
-                            </p>
-                            <h3>
-                                Спартак
-                            </h3>
+                    <#list matches as match>
+                        <hr></hr>
+                        <div class="row_matches">
+                            <div class="mini_information">
+                                <h3>
+                                    ${match.first_team}
+                                </h3>
+                                <p>
+                                    ${match.time}
+                                </p>
+                                <h3>
+                                    ${match.second_team}
+                                </h3>
+                            </div>
+                            <a href="/chatPage/${match.id_match}" class="go_to_chat">
+                                <p>
+                                    Перейти в чат
+                                </p>
+                                <img src="/resources/image/Arrow_right_light.png" alt="переход в чат">
+                            </a>
                         </div>
-                        <a href="/main" class="go_to_chat">
-                            <p>
-                                Перейти в чат
-                            </p>
-                            <img src="/resources/image/Arrow_right_light.png" alt="переход в чат">
-                        </a>
-                    </div>
-                    <hr></hr>
-                    <div class="row_matches">
-                        <div class="mini_information">
-                            <h3>
-                                Нижний Новгород
-                            </h3>
-                            <p>
-                                14:00
-                            </p>
-                            <h3>
-                                Спартак
-                            </h3>
-                        </div>
-                        <a href="/chatPage" class="go_to_chat">
-                            <p>
-                                Перейти в чат
-                            </p>
-                            <img src="/resources/image/Arrow_right_light.png" alt="переход в чат">
-                        </a>
-                    </div>
-                    <hr></hr>
+                        <hr></hr>
+                    </#list>
                 </div>
             </div>
 

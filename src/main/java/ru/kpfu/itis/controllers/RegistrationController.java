@@ -63,12 +63,6 @@ public class RegistrationController {
                         .login(user.getLogin())
                         .password(password)
                         .build();
-
-                Cookie cookie = usersService.signIn(loginDto);
-                cookie.setMaxAge(10 * 60 * 60);
-
-                response.addCookie(cookie);
-                response.addCookie(new Cookie("name", firstName));
                 try {
                     Email emailMessage = new SimpleEmail();
 
@@ -77,18 +71,13 @@ public class RegistrationController {
                     emailMessage.setAuthenticator(new DefaultAuthenticator(MY_EMAIL, MY_PASSWORD));
                     emailMessage.setHostName("smtp.mail.ru");
                     emailMessage.setSSLOnConnect(true);
-
-
                     // Отправитель
                     emailMessage.setFrom(MY_EMAIL);
-
                     // Тема сообщения
                     emailMessage.setSubject("Подтверждение регистрации");
-
                     // Текст сообщения.
                     emailMessage.setMsg(userDto.getFirst_name()+" "+userDto.getSecond_name()+
                             "вы успешно зарегистрировались на сайте \'Football Watch\'");
-
                     // Получатель
                     emailMessage.addTo(userDto.getEmail());
                     emailMessage.send();

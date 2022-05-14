@@ -6,15 +6,20 @@ import org.apache.commons.mail.Email;
 import org.apache.commons.mail.SimpleEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.ModelAndView;
 import ru.kpfu.itis.dto.LoginDto;
 import ru.kpfu.itis.dto.RequestForMatchesDto;
+import ru.kpfu.itis.models.Match;
 import ru.kpfu.itis.models.User;
 import ru.kpfu.itis.repositories.UserRepository;
+import ru.kpfu.itis.security.authectication.CookieAuthentication;
+import ru.kpfu.itis.services.MatchService;
 import ru.kpfu.itis.services.UsersService;
 
 import javax.servlet.http.Cookie;
@@ -27,7 +32,7 @@ import java.util.Optional;
 public class MainController {
 
     @Autowired
-    private UsersService usersService;
+    private MatchService matchService;
 
     @Autowired
     private UserRepository userRepository;
@@ -36,36 +41,19 @@ public class MainController {
     private static final String MY_PASSWORD = "Wpg0L4rAeMEJcNfzsPRH";
 
     @PostMapping(value = "/main")
-    public ModelAndView authorization(LoginDto loginDto, HttpServletResponse response){
-        LoginDto auth = LoginDto.builder()
-                .login(loginDto.getLogin())
-                .password(loginDto.getPassword())
-                .build();
-        Cookie cookie = usersService.signIn(auth);
-
-        ModelAndView modelAndView = new ModelAndView();
-        if(cookie != null){
-            response.addCookie(cookie);
-            response.addCookie(new Cookie("login", loginDto.getLogin()));
-            User user = null;
-            Optional<User> optional = userRepository.findByLogin(loginDto.getLogin());
-            if(optional.isPresent()){
-                user = optional.get();
-            }
-            System.out.println(user);
-            modelAndView.addObject("user", user);
-            modelAndView.setViewName("profile");
-            return modelAndView;
-        }else {
-            modelAndView.addObject("signInStatus", "Неправильный логин или пароль");
-            modelAndView.setViewName("redirect:/registration");
-            return modelAndView;
+    public String getLoginForm(HttpServletRequest request, ModelMap model, CookieAuthentication authentication) {
+        if (request.getParameter("error") != null) {
+            model.addAttribute("error", "Неправильный логин или пароль");
         }
+        return "profile";
     }
 
     @GetMapping(value = "/main")
-    public ModelAndView getMainPage() throws Exception {
+    public ModelAndView getMainPage(Authentication authentication) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
+        User user = (User) authentication.getPrincipal();
+        modelAndView.addObject("matches", matchService.getAllMatches());
+        modelAndView.addObject("user", user);
         modelAndView.setViewName("index");
         System.out.println("Перешел на главную");
         return modelAndView;
@@ -100,7 +88,7 @@ public class MainController {
             emailMessage.setMsg(requestMatches.getFirstName()+" "+requestMatches.getSecondName()+
                     " вы заполняли форму на сайте" +
                     " FootballWatch - вот ваше расписание:\n" +
-                    usersService.getAllMatches());
+                    matchService.getAllMatches());
 
             // Получатель
             emailMessage.addTo(requestMatches.getEmail());

@@ -40,9 +40,10 @@ public class CookieAuthFilter extends GenericFilterBean {
 
         if (cookies != null) {
             for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("Auth")) {
+                if (cookie.getName().equals("autho")) {
                     Optional<Authorization> authOptional = authRepository.findByCookieValue(cookie.getValue());
                     if (authOptional.isPresent()) {
+                        System.out.println("Я в кукеауффильтер"+ authOptional.get().getUser());
                         String email = authOptional.get().getUser().getEmail();
                         UserDetails userDetails = userDetailsService.loadUserByUsername(email);
 
@@ -55,7 +56,6 @@ public class CookieAuthFilter extends GenericFilterBean {
                 }
             }
         }
-
         filterChain.doFilter(servletRequest, servletResponse);
     }
 }

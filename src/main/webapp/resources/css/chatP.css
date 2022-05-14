@@ -45,12 +45,14 @@ header{
 .additional-menu{
     display: flex;
     align-items: center;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .additional-menu .sign-in{
     margin-right: 24px;
     display: flex;
     align-items: center;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .additional-menu .sign-in p{

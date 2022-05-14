@@ -22,22 +22,25 @@
 
                 <nav class="menu">
                     <a href="/main">Главная</a>
-                    <a>Расписание</a>
-                    <a>Заявка</a>
-                    <a>О проекте</a>
-                    <a>Чат</a>
+                    <a href="/main">Расписание</a>
+                    <a href="/main">Заявка</a>
+                    <a href="/main">О проекте</a>
+                    <a href="/chatP">Чат</a>
                 </nav>
 
-                <div class="additional-menu">
-                    <a class="sign-in">
-                        <img src="/resources/image/user.svg">
-                        <p>Войти</p>
-                    </a>
+                <#if user??><a href="/profile">${(user.first_name)!}</a>
+                <#else>
+                    <div class="additional-menu">
+                        <div class="sign-in">
+                            <a href="#" class="voity">Войти</a>
+                        </div>
 
-                    <div class="log-in">
-                        <a href="/r" class="registr">Зарегистрироваться</a>
+                        <div class="log-in">
+                            <a href="/registration" class="registr">Зарегистрироваться</a>
+                        </div>
                     </div>
-                </div>
+
+                </#if>
             </div>
 
             <div class="chat_area_wrapper">
@@ -49,7 +52,7 @@
 
 
                 <h2>
-                    Нижний Новгород - Спартак
+                   ${match.first_team} - ${match.second_team}
                 </h2>
 
                 <button class="connect" onclick="sendMessage('${id}', 'Присоединился к чату!')">Присоединиться к чату</button>
@@ -64,7 +67,7 @@
                 <input class="message_area" name="message" id="message" placeholder="Сообщение">
                 <div class="btns_wrapper">
                     <button onclick="sendMessage('${id}', $('#message').val())" id="sendMessageButton">Отправить</button>
-                    <a>
+                    <a href="${match.reference}">
                         Cмотреть матч
                     </a>
                 </div>

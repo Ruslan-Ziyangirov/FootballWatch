@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/signUp").permitAll()
+                .antMatchers("/registration","/main").permitAll()
                 .antMatchers("/profile","/chat").authenticated()
                 .and()
                 .formLogin()
@@ -53,12 +53,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .successHandler(successfulAuthenticationHandler)
                 .failureUrl("/main?error")
                 .permitAll()
-                //.defaultSuccessUrl("/profile")
                 .and()
                 .logout()
                 .logoutUrl("/logout")
                 .addLogoutHandler(customLogoutHandler)
-                .deleteCookies("Auth", "JSESSIONID")
+                .deleteCookies("autho", "JSESSIONID")
                 .logoutSuccessUrl("/main").permitAll()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

@@ -22,10 +22,10 @@ public class MessageWebSocketHandler extends TextWebSocketHandler {
     @Override
     public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) throws Exception {
         String messageAsString = (String) message.getPayload();
-        MessageDto body = objectMapper.readValue(messageAsString, MessageDto.class);
+        MessageDto messageDto = objectMapper.readValue(messageAsString, MessageDto.class);
 
-        if (body.getText().equals("Присоединился к чату!")) {
-            sessions.put(body.getAuthor(), session);
+        if (messageDto.getText().equals("Присоединился к чату!")) {
+            sessions.put(messageDto.getAuthor(), session);
         }
 
         for (WebSocketSession currentSession : sessions.values()) {

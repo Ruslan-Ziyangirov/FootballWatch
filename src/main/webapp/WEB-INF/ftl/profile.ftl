@@ -18,22 +18,25 @@
 
         <nav class="menu">
             <a href="/main">Главная</a>
-            <a>Расписание</a>
-            <a>Заявка</a>
-            <a>О проекте</a>
-            <a>Чат</a>
+            <a href="/main">Расписание</a>
+            <a href="/main">Заявка</a>
+            <a href="/main">О проекте</a>
+            <a href="/сhatP">Чат</a>
         </nav>
 
-        <div class="additional-menu">
-            <a class="sign-in">
-                <img src="/resources/image/user.svg">
-                <p>Войти</p>
-            </a>
+        <#if user??><a href="/profile">${(user.first_name)!}</a>
+        <#else>
+            <div class="additional-menu">
+                <div class="sign-in">
+                    <a href="#" class="voity">Войти</a>
+                </div>
 
-            <div class="log-in">
-                <a href="/r" class="registr">Зарегистрироваться</a>
+                <div class="log-in">
+                    <a href="/registration" class="registr">Зарегистрироваться</a>
+                </div>
             </div>
-        </div>
+
+        </#if>
     </div>
 
     <div class="profile_page_wrapper">
@@ -42,7 +45,18 @@
                     Личная информация
                 </h1>
                 <div>
-                    <img alt="фотка профиля" class="image-profile" src="/resources/image/profile.png">
+                    <img alt="фотка профиля" class="image-profile" src="${path}">
+                    <form method="POST" action="/uploadFile" enctype="multipart/form-data">
+                        <table>
+                            <tr>
+                                <td><label path="file">Select a file to upload</label></td>
+                                <td><input type="file" name="file" /></td>
+                            </tr>
+                            <tr>
+                                <td><input type="submit" value="Submit" /></td>
+                            </tr>
+                        </table>
+                    </form>
                     <hr></hr>
                     <div class="information_row">
                         <h3>

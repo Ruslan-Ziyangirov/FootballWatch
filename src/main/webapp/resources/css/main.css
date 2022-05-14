@@ -209,27 +209,27 @@ hr{
     width: 245px ;
     height: 264px;
     z-index: 1 ;
-    top: 1010px;
+    top: 942px;
 }
 
 .barc{
     position: absolute;
-    z-index: -1 ;
-    top: 2005px;
+    z-index: -100 ;
+    top: 2096px;
 }
 
 .holland {
     position: absolute;
     z-index: 1;
-    left: 1210px;
-    top: 2045px;
+    left: 1368px;
+    top: 2121px;
 }
 
 .cubs{
     position: absolute;
     z-index: 1 ;
-    left: 1300px;
-    top: 850px;
+    left: 1431px;
+    top: 830px;
 }
 
 .timetable{
@@ -250,18 +250,21 @@ hr{
 }
 
 .games{
+    width: 1200px;
     display: flex;
-    padding-bottom: 40px;
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
+    padding-bottom: 70px;
 }
 
 .game-item{
     display: flex ;
     background: #FFFFFF;
     box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.25);
-    width: 482px;
-    margin: 32px 0px;
+    width: 550px;
+    justify-content: space-between;
+    margin: 12px 12px;
 
 }
 
@@ -272,18 +275,18 @@ hr{
 .tinkoff{
     color: #000 ;
     font-size: 14px ;
-    width: 170px;
-    margin: 0px auto;
     margin-top: 15px;
     margin-bottom: 0px;
+    text-align: center;
+    width: 200px;
 }
 
 .place{
     color: #000 ;
     font-size: 12px ;
-    width: 120px;
-    margin: 0px auto;
     margin-top: 5px ;
+    text-align: center;
+    width: 200px;
 }
 
 .teams p{
@@ -296,11 +299,12 @@ hr{
 
 .teams{
     display: flex;
-    width: 170px;
+    width: 240px;
     margin: 0px auto;
     justify-content: space-between ;
     margin-bottom: 20px;
     margin-top: 10px;
+
 }
 
 .team2{
@@ -309,16 +313,11 @@ hr{
 
 .time{
     font-size: 16px;
-    margin-left: 103px;
-    margin-bottom: 0px;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
 }
 
-.date{
-    font-size: 14px;
-    color: #000;
-    margin-top: 0px;
-    margin-left: 90px;
-}
 
 .send-a-request{
 

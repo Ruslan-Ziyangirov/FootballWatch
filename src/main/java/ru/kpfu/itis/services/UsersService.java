@@ -12,8 +12,7 @@ import java.util.List;
 
 public interface UsersService {
     User addUser(UserDto userDto);
-    Cookie signIn(LoginDto loginDto);
-    List<Match> getAllMatches();
+
 
 //    void requestMessage(RequestForm requestForm);
 }

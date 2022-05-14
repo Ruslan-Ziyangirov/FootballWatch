@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import ru.kpfu.itis.models.Authorization;
 import ru.kpfu.itis.repositories.AuthRepository;
 import ru.kpfu.itis.security.details.UserDetailsImpl;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +30,7 @@ public class SuccessfulAuthenticationHandler implements AuthenticationSuccessHan
 
         String cookieValue = UUID.randomUUID().toString();
 
-        Cookie cookie = new Cookie("Auth", cookieValue);
+        Cookie cookie = new Cookie("autho", cookieValue);
         cookie.setMaxAge(24 * 60 * 60);
         response.addCookie(cookie);
 

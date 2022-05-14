@@ -21,7 +21,7 @@
                 <a href="/main" class="btn-about-project">О проекте</a>
                 <a href="/main" class="btn-timetable">Расписание матчей</a>
                 <a href="/main" class="btn-request" >Заявка</a>
-                <a href="/chat" class="chat"  >Чат</a>
+                <a href="/chatP" class="chat"  >Чат</a>
             </div>
 
             <div class="additional-menu">
