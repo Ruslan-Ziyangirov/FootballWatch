@@ -6,7 +6,7 @@ import org.springframework.security.web.RedirectStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
-import ru.kpfu.itis.models.Authorization;
+import ru.kpfu.itis.entities.Authorization;
 import ru.kpfu.itis.repositories.AuthRepository;
 import ru.kpfu.itis.security.details.UserDetailsImpl;
 import javax.servlet.ServletException;
@@ -27,19 +27,15 @@ public class SuccessfulAuthenticationHandler implements AuthenticationSuccessHan
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
             throws IOException, ServletException, IOException {
-
         String cookieValue = UUID.randomUUID().toString();
-
         Cookie cookie = new Cookie("autho", cookieValue);
         cookie.setMaxAge(24 * 60 * 60);
         response.addCookie(cookie);
-
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         Authorization auth = Authorization.builder()
                 .cookieValue(cookieValue)
                 .user(userDetails.getUser())
                 .build();
-        System.out.println("секьюрити заработал");
         authRepository.save(auth);
         redirectStrategy.sendRedirect(request, response, "/profile");
     }

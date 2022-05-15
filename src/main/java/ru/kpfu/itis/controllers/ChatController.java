@@ -1,5 +1,7 @@
 package ru.kpfu.itis.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,8 @@ import ru.kpfu.itis.services.MatchServiceImpl;
 @Controller
 public class ChatController {
 
+    private final Logger log = LoggerFactory.getLogger(ChatController.class);
+
     @Autowired
     private MatchService matchService;
 
@@ -20,7 +24,7 @@ public class ChatController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("matches", matchService.getAllMatches());
         modelAndView.setViewName("chatP");
-        System.out.println("Перешел в чат");
+        log.info("Перешел на страницу с чатами");
         return modelAndView;
     }
 }

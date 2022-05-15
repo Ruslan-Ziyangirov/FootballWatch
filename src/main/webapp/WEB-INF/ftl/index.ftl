@@ -26,21 +26,19 @@
                 <a href="/chatP" class="chat"  >Чат</a>
             </div>
 
-            <#if user??><a href="/profile">${(user.first_name)!}</a>
-                <#else>
-                    <div class="additional-menu">
-                        <div class="sign-in">
-                            <a href="#" class="voity">Войти</a>
-                        </div>
-
-                        <div class="log-in">
-                            <a href="/registration" class="registr">Зарегистрироваться</a>
-                        </div>
+            <#if  isAuthenticated?? && isAuthenticated == true>
+                <a href="/profile">Профиль</a>
+            <#else>
+                <div class="additional-menu">
+                    <div class="sign-in">
+                        <a href="#" class="voity">Войти</a>
                     </div>
 
+                    <div class="log-in">
+                        <a href="/registration" class="registr">Зарегистрироваться</a>
+                    </div>
+                </div>
             </#if>
-
-
         </div>
     </div>
     <!--Шапка:конец-->
@@ -147,6 +145,9 @@
         </button>
         <span id="myModal__close" class="close">ₓ</span>
     </div>
+    <#if error??>
+        <p>Неправильный логин или пароль</p>
+    </#if>
 </form>
 
 <div id="myOverlay">

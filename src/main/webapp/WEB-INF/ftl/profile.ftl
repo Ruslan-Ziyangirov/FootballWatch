@@ -21,7 +21,7 @@
             <a href="/main">Расписание</a>
             <a href="/main">Заявка</a>
             <a href="/main">О проекте</a>
-            <a href="/сhatP">Чат</a>
+            <a href="/chatP">Чат</a>
         </nav>
 
         <#if user??><a href="/profile">${(user.first_name)!}</a>
@@ -45,17 +45,15 @@
                     Личная информация
                 </h1>
                 <div>
-                    <img alt="фотка профиля" class="image-profile" src="${path}">
+                    <#if path??>
+                        <img alt="фотка профиля" class="image-profile" src="/photo/${path}">
+                    <#else>
+                        <img alt="фотка профиля" class="image-profile" src="/resources/image/default.png">
+                    </#if>
+
                     <form method="POST" action="/uploadFile" enctype="multipart/form-data">
-                        <table>
-                            <tr>
-                                <td><label path="file">Select a file to upload</label></td>
-                                <td><input type="file" name="file" /></td>
-                            </tr>
-                            <tr>
-                                <td><input type="submit" value="Submit" /></td>
-                            </tr>
-                        </table>
+                        <input type="file" name="file" class="change-photo" value="Поменять фотографию" />
+                        <input type="submit" value="Поменять" class="change-photo-btn"  />
                     </form>
                     <hr></hr>
                     <div class="information_row">

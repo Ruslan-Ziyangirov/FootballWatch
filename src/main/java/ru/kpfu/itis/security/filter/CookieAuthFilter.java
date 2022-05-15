@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.GenericFilterBean;
-import ru.kpfu.itis.models.Authorization;
+import ru.kpfu.itis.entities.Authorization;
 import ru.kpfu.itis.repositories.AuthRepository;
 import ru.kpfu.itis.security.authectication.CookieAuthentication;
 import ru.kpfu.itis.security.details.UserDetailsImpl;
@@ -43,7 +43,6 @@ public class CookieAuthFilter extends GenericFilterBean {
                 if (cookie.getName().equals("autho")) {
                     Optional<Authorization> authOptional = authRepository.findByCookieValue(cookie.getValue());
                     if (authOptional.isPresent()) {
-                        System.out.println("Я в кукеауффильтер"+ authOptional.get().getUser());
                         String email = authOptional.get().getUser().getEmail();
                         UserDetails userDetails = userDetailsService.loadUserByUsername(email);
 

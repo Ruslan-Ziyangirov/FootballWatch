@@ -1,11 +1,9 @@
-package ru.kpfu.itis.models;
+package ru.kpfu.itis.entities;
 
 
 import lombok.*;
-import org.springframework.context.annotation.Role;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Setter
@@ -38,5 +36,7 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    @Column(name= "url_photo")
+    private String url_photo;
 
 }

@@ -49,6 +49,9 @@
                 <input type="email" placeholder="E-mail" name="email" min="3" max="30" maxlength="30" minlength="3" required>
                 <button type="submit" class="btn-registrate">Зарегистрироваться</button>
             </form>
+        <#if validation??>
+            <p class="info-text">${validation}</p>
+        </#if>
     </div>
 </header>
 <script  src="/resources/js/jquery-3.6.0.min.js"></script>

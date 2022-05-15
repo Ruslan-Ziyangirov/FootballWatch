@@ -43,8 +43,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/registration","/main").permitAll()
-                .antMatchers("/profile","/chat").authenticated()
+                //Доступ только для не зарегистрированных пользователей
+                .antMatchers( "/main").not().fullyAuthenticated()
+                .antMatchers("/profile","/chatP").authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/main")
@@ -61,6 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/main").permitAll()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http.csrf().disable();
         http.addFilterAfter(cookieAuthFilter, UsernamePasswordAuthenticationFilter.class);
     }
 

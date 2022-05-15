@@ -1,6 +1,6 @@
 package ru.kpfu.itis.services;
 
-import ru.kpfu.itis.models.Match;
+import ru.kpfu.itis.entities.Match;
 
 import java.util.List;
 

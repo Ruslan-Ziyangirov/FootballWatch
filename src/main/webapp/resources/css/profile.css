@@ -61,7 +61,7 @@ body{
 }
 
 .profile_information_wrapper{
-    width: 300px;
+    width: 420px;
 }
 
 .image-profile{
@@ -76,4 +76,18 @@ body{
 
 .information_row h3{
     margin-right: 16px;
+}
+
+.change-photo{
+    background: transparent;
+    border: 0px;
+    text-decoration: #FFFFFF;
+}
+
+.change-photo-btn{
+    background: #0F4AEB;
+    font-size: 14px;
+    font-weight: bold;
+    border: 0px;
+    color: white;
 }
