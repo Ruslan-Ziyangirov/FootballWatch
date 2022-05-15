@@ -1,9 +1,13 @@
 package ru.kpfu.itis.repositories;
 
-import ru.kpfu.itis.models.Authorization;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+import ru.kpfu.itis.entities.Authorization;
 
 import java.util.Optional;
 
-public interface AuthRepository extends CrudRepository<Authorization> {
-    Optional<Object> findByCookie(String cookieValue);
+@Repository @Transactional
+public interface AuthRepository extends JpaRepository<Authorization, Long> {
+    Optional<Authorization> findByCookieValue(String cookieValue);
 }

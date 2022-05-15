@@ -23,18 +23,22 @@
                 <a href="#about-project" class="btn-about-project">О проекте</a>
                 <a href="#timetable" class="btn-timetable">Расписание матчей</a>
                 <a href="#send" class="btn-request" >Заявка</a>
-                <a href="/chat" class="chat"  >Чат</a>
+                <a href="/chatP" class="chat"  >Чат</a>
             </div>
 
-            <div class="additional-menu">
-                <div class="sign-in">
-                    <a href="#" class="voity">Войти</a>
-                </div>
+            <#if  isAuthenticated?? && isAuthenticated == true>
+                <a href="/profile">Профиль</a>
+            <#else>
+                <div class="additional-menu">
+                    <div class="sign-in">
+                        <a href="#" class="voity">Войти</a>
+                    </div>
 
-                <div class="log-in">
-                    <a href="/registration" class="registr">Зарегистрироваться</a>
+                    <div class="log-in">
+                        <a href="/registration" class="registr">Зарегистрироваться</a>
+                    </div>
                 </div>
-            </div>
+            </#if>
         </div>
     </div>
     <!--Шапка:конец-->
@@ -84,36 +88,24 @@
         <h2>Расписание матчей на ближайшие дни</h2>
 
         <div class="games">
-
-            <div class="game-item">
-                <img src="/resources/image/russia.png">
-                <div class="game-content">
-                    <p class="tinkoff">Чемпионат Мира 2022</p>
-                    <p class="place">ГАЗПРОМ Арена</p>
-                    <div class="teams">
-                        <p class="team1">Россия</p>
-                        <p class="team2">Кипр</p>
+            <#if matches??>
+                <#list matches as match>
+                    <div class="game-item">
+                        <img src="/resources/image/russia.png">
+                        <div class="game-content">
+                            <p class="tinkoff">Чемпионат Мира 2022</p>
+                            <p class="place">ГАЗПРОМ Арена</p>
+                            <div class="teams">
+                                <p class="team1">${match.first_team}</p>
+                                <p class="team2">${match.second_team}</p>
+                            </div>
+                            <h3 class="time">${match.time}</h3>
+                        </div>
+                        <img src="/resources/image/cipr.png">
                     </div>
-                    <h3 class="time">20:00</h3>
-                    <p class="date">11.11.2021</p>
-                </div>
-                <img src="/resources/image/cipr.png">
-            </div>
-
-            <div class="game-item">
-                <img src="/resources/image/croatia.png">
-                <div class="game-content">
-                    <p class="tinkoff">Чемпионат Мира 2022</p>
-                    <p class="place">Полюд</p>
-                    <div class="teams">
-                        <p class="team1">Хорватия</p>
-                        <p class="team2">Россия</p>
-                    </div>
-                    <h3 class="time">22:00</h3>
-                    <p class="date">02.10.2021</p>
-                </div>
-                <img src="/resources/image/russia2.png">
-            </div>
+                </#list>
+            <#else>
+            </#if>
         </div>
     </div>
 </section>
@@ -143,7 +135,7 @@
 <img src="/resources/image/barc.png" class="barc">
 <img src="/resources/image/holland.png" class="holland">
 
-<form method="post" action="/s" id="myModal">
+<form method="post" id="myModal">
     <p class="avtorisation">Авторизация</p>
     <div class="wrapper-input">
         <input type="text" placeholder="Логин" name="login" required>
@@ -151,25 +143,11 @@
         <button type="submit" class="btn-send-auth">
             Войти
         </button>
-        <h4 style="
-        color: #0a54ea;
-        font-size: 15px;
-        margin: 0 auto;
-        width: 250px;
-        ">
-
-        </h4>
-        <h4 style="
-        color: #0a54ea;
-        font-size: 15px;
-        margin: 0 auto;
-        width: 250px;
-        ">
-
-        </h4>
-
         <span id="myModal__close" class="close">ₓ</span>
     </div>
+    <#if error??>
+        <p>Неправильный логин или пароль</p>
+    </#if>
 </form>
 
 <div id="myOverlay">

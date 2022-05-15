@@ -1,13 +1,17 @@
 package ru.kpfu.itis.services;
 
 import ru.kpfu.itis.dto.UserDto;
-import ru.kpfu.itis.form.LoginForm;
+import ru.kpfu.itis.entities.User;
 
-import javax.servlet.http.Cookie;
+import java.util.List;
 
 
 public interface UsersService {
-    void addUser(UserDto userDto);
-    Cookie signIn(LoginForm loginForm);
+    User addUser(UserDto userDto);
+    List<User> getAllUsers();
+    User updateUser(Long userId, UserDto user);
+    void deleteUser(Long userId);
+
+    void updatePhoto(String url_photo, Long id);
 //    void requestMessage(RequestForm requestForm);
 }

@@ -57,11 +57,11 @@ $(function(){
         }, 1700);
     });
 
-    $('.btn-send').click(function(e) {
-        e.preventDefault();
-        $('.popup-bg').fadeIn(800);
-        $('html').addClass('no-scroll');
-    });
+    // $('.btn-send').click(function(e) {
+    //     e.preventDefault();
+    //     $('.popup-bg').fadeIn(800);
+    //     $('html').addClass('no-scroll');
+    // });
 
     $('#myModal___close').click(function() {
         $('.popup-bg').fadeOut(800);

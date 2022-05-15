@@ -1,11 +1,23 @@
 package ru.kpfu.itis.repositories;
 
-import ru.kpfu.itis.models.User;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+import ru.kpfu.itis.entities.User;
 
-@Repository
-public interface UserRepository extends CrudRepository<User,Long>{
+import java.util.Optional;
 
-    User findByLogin(String login);
+@Repository @Transactional
+public interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findUserByEmail(String email);
+    Optional<User> findByLogin(String login);
+
+    @Modifying
+    @Transactional
+    @Query(nativeQuery = true, value="update users set url_photo=:url_photo where id_user=:id_user")
+    void setPhoto(@Param("url_photo") String url_photo,
+                  @Param("id_user") Long id_user);
 }

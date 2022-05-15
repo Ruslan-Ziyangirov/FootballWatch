@@ -1,0 +1,26 @@
+GET http://localhost:8080/api/users
+###
+
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "first_name": "Криштиану",
+  "second_name": "Роналду",
+  "login": "cristiano",
+  "email": "cristiano@mail.ru"
+}
+
+###
+
+PUT http://localhost:8080/api/users/474
+Content-Type: application/json
+
+{
+  "first_name": "Марат",
+  "second_name": "Гиниятов"
+}
+
+###
+
+DELETE http://localhost:8080/api/users/475

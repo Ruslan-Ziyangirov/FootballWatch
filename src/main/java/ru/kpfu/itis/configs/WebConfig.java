@@ -3,15 +3,14 @@ package ru.kpfu.itis.configs;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-    @Configuration
-    @EnableWebMvc
-    public class WebConfig extends WebMvcConfigurerAdapter {
-    
-        @Override
-        public void addResourceHandlers(ResourceHandlerRegistry registry) {
-            System.out.println("подключаю css");
-            registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-        }
+@Configuration
+@EnableWebMvc
+public class WebConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
+}
