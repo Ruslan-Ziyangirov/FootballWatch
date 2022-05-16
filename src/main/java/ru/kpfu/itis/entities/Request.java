@@ -12,18 +12,16 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "messages")
-public class Message {
+@Table(name = "request")
+public class Request {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_message;
+    private Long id_request;
 
-    @Column(name = "id_user")
-    private Long id_user;
+    @Column(name = "author")
+    private String author;
 
-    @Column(name = "id_match")
-    private Long id_match;
-
-
+    @Column(name = "text")
+    private String text;
 }

@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import ru.kpfu.itis.exceptions.ApplicationException;
-
 import java.util.logging.Logger;
 
 @ControllerAdvice
@@ -17,7 +16,7 @@ public class ExceptionController {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception.class)
     public String postException() {
-        return "exception";
+        return "exception_page";
     }
 
     @ExceptionHandler(RuntimeException.class)
@@ -25,5 +24,4 @@ public class ExceptionController {
         log.info(exception.toString());
         log.info(exception.getMessage());
     }
-
 }

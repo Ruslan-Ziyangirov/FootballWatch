@@ -7,10 +7,8 @@ import lombok.*;
 @Setter
 @Getter
 @EqualsAndHashCode
-public class RequestForm {
-
+public class RequestForMatchesForm {
     private String firstName;
     private String secondName;
     private String email;
-
 }

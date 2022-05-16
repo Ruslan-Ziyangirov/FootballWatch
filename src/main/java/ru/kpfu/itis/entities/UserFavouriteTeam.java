@@ -1,10 +1,10 @@
 package ru.kpfu.itis.entities;
 
 import lombok.*;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 
+@Data
 @Setter
 @Getter
 @EqualsAndHashCode
@@ -13,19 +13,17 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "auth")
-
-@Transactional
-public class Authorization {
+@Table(name = "users_favourite_teams")
+public class UserFavouriteTeam {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @Column(name = "id_user")
+    private Long id_user;
 
-    @ManyToOne
-    private User user;
-
-    @Column(name = "cookie_value")
-    private String cookieValue;
-
+    @Column(name = "id_team")
+    private Long id_team;
+            
 }

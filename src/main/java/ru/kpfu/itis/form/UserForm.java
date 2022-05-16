@@ -1,5 +1,4 @@
 package ru.kpfu.itis.form;
-
 import lombok.*;
 
 @AllArgsConstructor
@@ -8,9 +7,11 @@ import lombok.*;
 @Setter
 @Getter
 @EqualsAndHashCode
-public class LoginForm {
-
+public class UserForm {
+    private String first_name;
+    private String second_name;
     private String login;
     private String password;
-
+    private String repassword;
+    private String email;
 }

@@ -45,50 +45,117 @@
                     Личная информация
                 </h1>
                 <div>
-                    <#if path??>
-                        <img alt="фотка профиля" class="image-profile" src="/photo/${path}">
-                    <#else>
-                        <img alt="фотка профиля" class="image-profile" src="/resources/image/default.png">
-                    </#if>
+                    <div class="profile_all_information">
+                        <div class="my_data">
+                            <#if path??>
+                                <img alt="фотка профиля" class="image-profile" src="/photo/${path}">
+                            <#else>
+                                <img alt="фотка профиля" class="image-profile" src="/resources/image/default.png">
+                            </#if>
 
-                    <form method="POST" action="/uploadFile" enctype="multipart/form-data">
-                        <input type="file" name="file" class="change-photo" value="Поменять фотографию" />
-                        <input type="submit" value="Поменять" class="change-photo-btn"  />
-                    </form>
-                    <hr></hr>
-                    <div class="information_row">
-                        <h3>
-                            Имя:
-                        </h3>
-                        <p>
-                            ${user.first_name}
-                        </p>
+                            <form method="POST" action="/uploadFile" enctype="multipart/form-data">
+                                <input type="file" name="file" class="change-photo" value="Поменять фотографию" />
+                                <input type="submit" value="Поменять" class="change-photo-btn"  />
+                            </form>
+                            <hr></hr>
+                            <div class="information_row" >
+                                <h3>
+                                    Имя:
+                                </h3>
+                                <p>
+                                    ${user.first_name}
+                                </p>
+                            </div>
+                            <div class="information_row">
+                                <h3>
+                                    Фамилия:
+                                </h3>
+                                <p>
+                                    ${user.second_name}
+                                </p>
+                            </div>
+                            <div class="information_row">
+                                <h3>
+                                    Email:
+                                </h3>
+                                <p>
+                                    ${user.email}
+                                </p>
+                            </div>
+                            <div class="information_row">
+                                <h3>
+                                    Логин:
+                                </h3>
+                                <p>
+                                    ${user.login}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="favourite_matches">
+                            <#if favouriteTeams??>
+                                <h3>Избранные матчи</h3>
+                                <#list favouriteTeams as team>
+                                    <div class="row_team">
+                                        <div>
+                                            <h4 class="title_row">
+                                                Название команды
+                                            </h4>
+                                            <p>${team.team_name}</p>
+                                        </div>
+                                        <div>
+                                            <h4 class="title_row">
+                                                Стадион
+                                            </h4>
+                                            <p>${team.stadium}</p>
+                                        </div>
+                                        <div>
+                                            <h4 class="title_row">
+                                                Тренер
+                                            </h4>
+                                            <p>${team.coach}</p>
+                                        </div>
+                                        <div>
+                                            <h4 class="title_row">
+                                                Дата Создания
+                                            </h4>
+                                            <p>${team.birthday}</p>
+                                        </div>
+                                    </div>
+                                </#list>
+                                <#if oldTeam??>
+                                    <div class="oldest_team">
+                                        <h3>Самая старая команда</h3>
+                                        <div class="row_team">
+                                            <p>${oldTeam.team_name}</p>
+                                            <p>${oldTeam.stadium}</p>
+                                            <p>${oldTeam.coach}</p>
+                                            <p>${oldTeam.birthday}</p>
+                                        </div>
+                                    </div>
+                                <#else>
+                                    <h2>Ничего тут нет</h2>
+                                </#if>
+                            <#else>
+                            </#if>
+                        </div>
                     </div>
-                    <div class="information_row">
-                        <h3>
-                            Фамилия:
-                        </h3>
-                        <p>
-                            ${user.second_name}
-                        </p>
-                    </div>
-                    <div class="information_row">
-                        <h3>
-                            Email:
-                        </h3>
-                        <p>
-                            ${user.email}
-                        </p>
-                    </div>
-                    <div class="information_row">
-                        <h3>
-                            Логин:
-                        </h3>
-                        <p>
-                            ${user.login}
-                        </p>
-                    </div>
+
+
+
+<#--                    <form method="POST" action="/profileMatch" >-->
+<#--                        <input type="text" placeholder="Название" name="team_name"  required>-->
+<#--                        <input type="text" placeholder="Стадион" name="stadium"  required>-->
+<#--                        <input type="text" placeholder="Тренер" name="coach"   required>-->
+<#--                        <input type="text" placeholder="День рождение" name="birthday"  required>-->
+<#--                        <button type="submit">Отправить</button>-->
+<#--                    </form>-->
+
+
+
+
+
                 </div>
+
         </div>
     </div>
 </body>

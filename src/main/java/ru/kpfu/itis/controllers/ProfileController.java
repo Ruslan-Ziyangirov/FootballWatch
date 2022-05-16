@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import ru.kpfu.itis.dto.FavouriteTeamDto;
+import ru.kpfu.itis.entities.FavouriteTeam;
 import ru.kpfu.itis.entities.User;
 import ru.kpfu.itis.repositories.UserRepository;
 import ru.kpfu.itis.security.authectication.CookieAuthentication;
@@ -49,9 +51,11 @@ public class ProfileController {
     public ModelAndView getProfilePage(CookieAuthentication authentication) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         User user = (User) authentication.getPrincipal();
-//        modelAndView.addObject("path", DEFAULT_PATH_IMAGE);
+        modelAndView.addObject("favouriteTeams", usersService.getFavouriteTeams(user.getId_user()));
         modelAndView.addObject("path", user.getUrl_photo());
         modelAndView.addObject("user", user);
+        modelAndView.addObject("oldTeam", usersService.getOldestTeam());
+        logger.info(user.toString());
         modelAndView.setViewName("profile");
         logger.info("Profile Page");
         return modelAndView;
@@ -86,6 +90,17 @@ public class ProfileController {
             logger.info("BadRequest - фото не удалость получить");
             return ResponseEntity.badRequest().build();
         }
+    }
+
+    @PostMapping(value = "/profileMatch")
+    public ModelAndView addMatch(FavouriteTeamDto favouriteTeamDto){
+        System.out.println(favouriteTeamDto);
+        ModelAndView modelAndView = new ModelAndView();
+        FavouriteTeam favouriteTeam = usersService.addMatch(favouriteTeamDto);
+        logger.info(favouriteTeam.toString());
+        modelAndView.setViewName("redirect:/profile");
+        return modelAndView;
+
     }
 
 }

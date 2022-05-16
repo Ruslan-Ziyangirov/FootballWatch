@@ -91,3 +91,36 @@ body{
     border: 0px;
     color: white;
 }
+
+.profile_all_information{
+    display: flex;
+    justify-content: space-between;
+    width: 1200px;
+}
+
+.row_team{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.favourite_matches{
+    width: 600px;
+}
+
+.my_data{
+    width: 500px;
+}
+
+.title_row{
+    font-size: 14px;
+}
+
+.oldest_team{
+    justify-content: end;
+}
+
+.oldest_team h3{
+    color: #0F4AEB ;
+}
